@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body style="text-align:center;background:pink">
+<h2>Calculating Love ❤️</h2>
+<h1 id="timer">59</h1>
+
+<script>
+let t=59;
+let name="{{name}}";
+setInterval(()=>{
+t--;
+document.getElementById("timer").innerHTML=t;
+if(t<=0){
+window.location="/result/"+name;
+}
+},1000);
+</script>
+</body>
+</html>

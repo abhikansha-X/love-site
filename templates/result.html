@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Love Result</title>
+
+<style>
+body{
+    background: linear-gradient(#ff9a9e,#fad0c4);
+    text-align:center;
+    font-family:sans-serif;
+    overflow:hidden;
+}
+
+h1{
+    margin-top:120px;
+    font-size:50px;
+    color:white;
+}
+
+.percent{
+    font-size:80px;
+    color:white;
+    animation: pop 1s ease;
+}
+
+@keyframes pop{
+    0%{transform:scale(0)}
+    100%{transform:scale(1)}
+}
+
+/* hearts animation */
+.heart{
+    position:absolute;
+    color:red;
+    font-size:25px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh);}
+    100%{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>❤️ Love Result ❤️</h1>
+<div class="percent">{{percent}}%</div>
+
+<script>
+for(let i=0;i<20;i++){
+    let heart=document.createElement("div");
+    heart.innerHTML="❤️";
+    heart.className="heart";
+    heart.style.left=Math.random()*100+"%";
+    heart.style.animationDuration=(3+Math.random()*3)+"s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
