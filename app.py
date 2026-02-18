@@ -93,5 +93,8 @@ def get_users():
 def check_result(name):
     return results.get(name, "Pending")
 
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT",10000))
+    app.run(host="0.0.0.0", port=port)
