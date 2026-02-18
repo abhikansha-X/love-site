@@ -53,37 +53,8 @@ def admin():
         percent = request.form['percent']
         results[name] = percent
 
-    users = "".join([f"<li>{u} ❤️ {user_data[u]}</li>" for u in user_data])
-    return f"""
-    <h2>Admin Panel</h2>
+    return render_template("admin.html", users=user_data)
 
-    <ul id="userlist>{users}</ul>
-
-    <form method='post'>
-        Name: <input name='name'>
-        Percentage: <input name='percent'>
-        <button>Submit</button>
-    </form>
-
-    <script>
-    function loadUsers(){{
-    fetch('/get_users')
-    .then(res => res.json())
-    .then(data => {{
-    let list = "";
-    for(let u in data){{
-    list += "<li>"+u++ ❤️
-    "+data[u]+"</li>";
-    }}
-
-    document.getElementById("userlist").innerHTML = list;
-    }});
-    }}
-    setInterval(loadUsers,3000);
-    loadUsers();
-    </script>
-    """
-from flask import jsonify
 
 @app.route('/get_users')
 def get_users():
