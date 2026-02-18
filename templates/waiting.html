@@ -1,0 +1,18 @@
+<script>
+let t = 59;
+let name = "{{name}}";
+
+setInterval(() => {
+    t--;
+    document.getElementById("timer").innerHTML = t;
+
+    fetch("/check_result/" + name)
+    .then(res => res.text())
+    .then(data => {
+        if (data != "Pending") {
+            window.location = "/result/" + name;
+        }
+    });
+
+}, 3000);
+</script>
