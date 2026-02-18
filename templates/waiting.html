@@ -1,18 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Waiting...</title>
+    <style>
+        body{
+            text-align:center;
+            font-family:Arial;
+            background:#ffe6e6;
+            margin-top:100px;
+        }
+        h1{
+            font-size:40px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Calculating Love ❤️</h1>
+<h2 id="timer">60</h2>
+
 <script>
-let t = 59;
+let t = 60;
 let name = "{{name}}";
 
-setInterval(() => {
+let interval = setInterval(()=>{
     t--;
     document.getElementById("timer").innerHTML = t;
 
-    fetch("/check_result/" + name)
-    .then(res => res.text())
-    .then(data => {
-        if (data != "Pending") {
-            window.location = "/result/" + name;
-        }
-    });
-
-}, 3000);
+    if(t<=0){
+        clearInterval(interval);
+        window.location = "/result/" + name;
+    }
+},1000);
 </script>
+
+</body>
+</html>
